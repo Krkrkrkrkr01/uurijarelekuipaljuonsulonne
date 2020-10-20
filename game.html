@@ -1,0 +1,370 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="utf-8"/> 
+<title>Find out how lucky you are.....</title> 
+<style> 
+body { 
+color: lightblue; 
+} 
+button { 
+color: lightblue; 
+} 
+input { 
+color: lightblue; 
+} 
+
+
+#main { 
+font-size: 81px; 
+border: 1px solid lightblue; 
+width:560px; 
+height:310px; 
+overflow: hidden; 
+} 
+#b1,#b2,#b3,#b4,#b5 { 
+margin:0px; 
+vertical-align:top; 
+display:inline-block; 
+width:80px; 
+height:320px; 
+font-weight:bold; 
+text-align:center; 
+padding-top: 0px; 
+padding-bottom:5px; 
+} 
+#b1 { 
+margin-left: 0px; 
+} 
+#bet,#balance,#skoor { 
+display:inline; 
+} 
+#main,#main2 { 
+display:inline-block; 
+vertical-align:top; 
+} 
+#main2 { 
+margin-left:20px; 
+font-size: 30px; 
+word-wrap: break-line; 
+width:400px; 
+} 
+#main2 button,#main2 input{ 
+font-size: 30px; 
+} 
+#main2 input{ 
+width: 250px; 
+} 
+
+#bet { 
+width: 70px; 
+} 
+
+</style> 
+
+</head> 
+<body onload="Game0()"> 
+
+<div id="main"> 
+<div id="b1"> 
+</div> 
+<div id="b2"> 
+</div> 
+<div id="b3"> 
+</div> 
+<div id="b4"> 
+</div> 
+<div id="b5"> 
+</div> 
+</div> 
+<div id="main2"> 
+<p></p> 
+<button onclick="game00000()">Begin</button> 
+<p></p> 
+<div>Bet: <input type="text" id="bet" value="0.01"/></div> 
+<div>Balance: <div id="balance">1</div></div> 
+<div id="balance2" style="display: none;">1</div> 
+</div> 
+
+<script> 
+
+
+function calcwinnings() { 
+
+var pan=parseFloat(document.getElementById('bet').value); 
+
+var bal=parseFloat(document.getElementById('balance2').innerText); 
+
+bal=bal-pan; 
+var sum=bal; 
+
+var elements=document.getElementById('b1').children; 
+var a1=elements.item(0).innerText; 
+elements=document.getElementById('b2').children; 
+var a2=elements.item(0).innerText; 
+
+elements=document.getElementById('b3').children; 
+var a3=elements.item(0).innerText; 
+
+elements=document.getElementById('b4').children; 
+var a4=elements.item(0).innerText; 
+
+elements=document.getElementById('b5').children; 
+var a5=elements.item(0).innerText; 
+
+
+elements=document.getElementById('b1').children; 
+var b1=elements.item(1).innerText; 
+
+elements=document.getElementById('b2').children; 
+var b2=elements.item(1).innerText; 
+
+elements=document.getElementById('b3').children; 
+var b3=elements.item(1).innerText; 
+
+elements=document.getElementById('b4').children; 
+var b4=elements.item(1).innerText; 
+
+elements=document.getElementById('b5').children; 
+var b5=elements.item(1).innerText; 
+
+
+elements=document.getElementById('b1').children; 
+var c1=elements.item(2).innerText; 
+
+elements=document.getElementById('b2').children; 
+var c2=elements.item(2).innerText; 
+
+elements=document.getElementById('b3').children; 
+var c3=elements.item(2).innerText; 
+
+elements=document.getElementById('b4').children; 
+var c4=elements.item(2).innerText; 
+
+elements=document.getElementById('b5').children; 
+var c5=elements.item(2).innerText; 
+
+var kordaja=5; 
+
+if(a1==a2&&a2==a3) sum=sum+pan*3*kordaja; 
+if(a1==a2&&a2==a3&&a3==a4) sum=sum+pan*4*kordaja; 
+if(a1==a2&&a2==a3&&a3==a4&&a4==a5) sum=sum+pan*5*kordaja; 
+if(a1==b2&&b2==c3) sum=sum+pan*3*kordaja; 
+if(a1==b1&&b1==c1) sum=sum+pan*3*kordaja; 
+
+if(b1==b2&&b2==b3) sum=sum+pan*3*kordaja; 
+if(b1==b2&&b2==b3&&b3==b4) sum=sum+pan*4*kordaja; 
+if(b1==b2&&b2==b3&&b3==b4&&b4==b5) sum=sum+pan*5*kordaja; 
+
+if(c1==b2&&b2==a3) sum=sum+pan*3*kordaja; 
+if(c1==c2&&c2==c3) sum=sum+pan*3*kordaja; 
+if(c1==c2&&c2==c3&&c3==c4) sum=sum+pan*4*kordaja; 
+if(c1==c2&&c2==c3&&c3==c4&&c4==c5) sum=sum+pan*5*kordaja; 
+
+
+if(c2==c3&&c3==c4&&c4==c5) sum=sum+pan*4*kordaja; 
+if(b2==b3&&b3==b4&&b4==b5) sum=sum+pan*4*kordaja; 
+if(a2==a3&&a3==a4&&a4==a5) sum=sum+pan*4*kordaja; 
+
+if(a2==a3&&a3==a4) sum=sum+pan*3*kordaja; 
+if(a3==a4&&a4==a5) sum=sum+pan*3*kordaja; 
+
+if(b2==b3&&b3==b4) sum=sum+pan*3*kordaja; 
+if(b3==b4&&b4==b5) sum=sum+pan*3*kordaja; 
+
+if(c2==c3&&c3==c4) sum=sum+pan*3*kordaja; 
+if(c3==c4&&c4==c5) sum=sum+pan*3*kordaja; 
+
+if(a2==b2&&b2==c2) sum=sum+pan*3*kordaja; 
+if(a3==b3&&b3==c3) sum=sum+pan*3*kordaja; 
+
+if(a4==b4&&b4==c4) sum=sum+pan*3*kordaja; 
+if(a5==b5&&b5==c5) sum=sum+pan*3*kordaja; 
+
+
+if(a1==b2&&b2==c3&&c3==b4&&b4==a5) sum=sum+pan*5*kordaja; 
+
+if(c1==b2&&b2==a3&&a3==b4&&b4==c5) sum=sum+pan*5*kordaja; 
+
+if(a1==b2&&b2==c3&&c3==b4&&b4==a5&&c1==b2&&b2==a3&&a3==b4&&b4==c5) sum=sum+pan*10*kordaja; 
+
+
+if(a1==a2&&b1==b2&&c1==c2&&a1==b1&&b1==c1) sum=sum+pan*6*kordaja; 
+if(a2==a3&&b2==b3&&c2==c3&&a2==b2&&b2==c2) sum=sum+pan*6*kordaja; 
+if(a3==a4&&b3==b4&&c3==c4&&a3==b3&&b3==c3) sum=sum+pan*6*kordaja; 
+if(a4==a5&&b4==b5&&c4==c5&&a4==b4&&b4==c4) sum=sum+pan*6*kordaja; 
+
+if(a1==a2&&a2==a3&&b1==b2&&b2==b3&&a1==b1) sum=sum+pan*6*kordaja; 
+if(a2==a3&&a3==a4&&b2==b3&&b3==b4&&a2==b2) sum=sum+pan*6*kordaja; 
+if(a3==a4&&a4==a5&&b3==b4&&b4==b5&&a3==b3) sum=sum+pan*6*kordaja; 
+
+if(b1==b2&&b2==b3&&c1==c2&&c2==c3&&b1==c1) sum=sum+pan*6*kordaja; 
+if(b2==b3&&b3==b4&&c2==c3&&c3==c4&&b2==c2) sum=sum+pan*6*kordaja; 
+if(b3==b4&&b4==b5&&c3==c4&&c4==c5&&b3==c3) sum=sum+pan*6*kordaja; 
+
+if(a1==a2&&a2==a3&&a3==a4&&b1==b2&&b2==b3&&b3==b4&&a1==b1) sum=sum+pan*8*kordaja; 
+if(a2==a3&&a3==a4&&a4==a5&&b2==b3&&b3==b4&&b4==b5&&a2==b2) sum=sum+pan*8*kordaja; 
+
+if(b1==b2&&b2==b3&&b3==b4&&c1==c2&&c2==c3&&c3==c4&&b1==c1) sum=sum+pan*8*kordaja; 
+if(b2==b3&&b3==b4&&b4==b5&&c2==c3&&c3==c4&&c4==c5&&b2==c2) sum=sum+pan*8*kordaja; 
+
+if(a1==a2&&a2==a3&&b1==b2&&b2==b3&&c1==c2&&c2==c3&&a1==b1&&b1==c1) sum=sum+pan*9*kordaja; 
+if(a2==a3&&a3==a4&&b2==b3&&b3==b4&&c2==c3&&c3==c4&&a2==b2&&b2==c2) sum=sum+pan*9*kordaja; 
+if(a3==a4&&a4==a5&&b3==b4&&b4==b5&&c3==c4&&c4==c5&&a3==b3&&b3==c3) sum=sum+pan*9*kordaja; 
+
+if(a1==a2&&a2==a3&&a3==a4&&b1==b2&&b2==b3&&b3==b4&&c1==c2&&c2==c3&&c3==c4&&a1==b1&&b1==c1) sum=sum+pan*12*kordaja; 
+if(a2==a3&&a3==a4&&a4==a5&&b2==b3&&b3==b4&&b4==b5&&c2==c3&&c3==c4&&c4==c5&&a2==b2&&b2==c2) sum=sum+pan*12*kordaja; 
+
+if(a1==a2&&a2==a3&&a3==a4&&a4==a5&&b1==b2&&b2==b3&&b3==b4&&b4==b5&&c1==c2&&c2==c3&&c3==c4&&c4==c5&&a1==b1&&b1==c1) sum=sum+pan*25*kordaja; 
+
+var sum01 = sum.toFixed(2);
+document.getElementById("balance2").innerText=sum01; 
+document.getElementById("balance").innerText=document.getElementById("balance2").innerText; 
+
+} 
+
+function clonea(numbers) { 
+var numbersCopy = []; 
+
+for (i = 0; i < numbers.length; i++) { 
+numbersCopy[i] = numbers[i]; 
+} 
+return numbersCopy; 
+} 
+
+function leiaarray(arr, pikkus) { 
+var idx=0; 
+var arr2=new Array(); 
+
+while(arr.length>0) { 
+var newe=null; 
+var idx=parseInt(Math.random()*arr.length); 
+newe=arr[idx]; 
+var newarr=new Array(); 
+for(var i=0; i<arr.length; i++) { 
+if(i!=idx) newarr.push(arr[i]); 
+} 
+arr=newarr; 
+
+arr2.push(newe); 
+} 
+arr=arr2; 
+return arr; 
+} 
+
+function addtodiv(diva, arr) { 
+for(var i=0; i<arr.length; i++) { 
+var node = document.createElement("p"); 
+node.setAttribute("class","a3"); 
+node.setAttribute("style","line-height: 20px;"); 
+var textnode = document.createTextNode(arr[i]); 
+node.appendChild(textnode); 
+document.getElementById(diva).appendChild(node); 
+} 
+} 
+function leiaarvud(a) { 
+
+var arvs=new Array(); 
+
+for(var i=0; i<a; i++) { 
+arvs.push(leiaarv()); 
+} 
+
+var aaa1=leiaarray(arvs); 
+var aaa2=leiaarray(aaa1); 
+var aaa3=leiaarray(aaa2); 
+var aaa4=leiaarray(aaa3); 
+var aaa5=leiaarray(aaa4); 
+
+addtodiv("b1",aaa1); 
+addtodiv("b2",aaa2); 
+addtodiv("b3",aaa3); 
+addtodiv("b4",aaa4); 
+addtodiv("b5",aaa5); 
+
+start1(); 
+} 
+var increment=0; 
+
+function leiaarv() { 
+var y1=new Array(2,3,4,5,6,7,8,9,10,'J','Q','K','A'); 
+var today = new Date(); 
+var time =today.getFullYear()*365*24*60*60*1000+today.getHours()*60*60*1000+today.getMinutes()*60*1000+today.getSeconds()*1000+today.getMilliseconds(); 
+var rand1=Math.random()*2000*time*0.0001; 
+var y3=2; 
+rand1=parseInt(rand1)+increment; 
+y3=y1[rand1%(y1.length)]; 
+increment++; 
+return y3; 
+} 
+
+function addmargin(diva) { 
+var curval=document.getElementById(diva).style.marginTop; 
+var aa1=parseInt(curval, 10)+10; 
+document.getElementById(diva).style.marginTop=aa1 + 'px'; 
+} 
+function start1() { 
+var ii=parseInt(document.getElementById("b1").style.marginTop); 
+if(ii>-50) { 
+calcwinnings(); 
+return; 
+} 
+
+addmargin("b1"); 
+addmargin("b2"); 
+addmargin("b3"); 
+addmargin("b4"); 
+addmargin("b5"); 
+
+setTimeout(function() { start1();}, 10); 
+
+} 
+
+
+
+function game00000() { 
+
+document.getElementById("b1").innerHTML=""; 
+document.getElementById("b2").innerHTML=""; 
+document.getElementById("b3").innerHTML=""; 
+document.getElementById("b4").innerHTML=""; 
+document.getElementById("b5").innerHTML=""; 
+
+document.getElementById("b1").style.marginTop="-580px"; 
+document.getElementById("b2").style.marginTop="-580px"; 
+document.getElementById("b3").style.marginTop="-580px"; 
+document.getElementById("b4").style.marginTop="-580px"; 
+document.getElementById("b5").style.marginTop="-580px"; 
+
+var pan=document.getElementById("bet").value; 
+var bal=document.getElementById("balance2").innerText; 
+
+
+if(parseFloat(bal)<0.01) { 
+alert("Raha otsas"); 
+return; 
+} 
+if(parseFloat(bal)-pan<0) { 
+alert("Panus liiga suur."); 
+document.getElementById("bet").innerText=bal; 
+return; 
+} 
+
+
+
+leiaarvud(15); 
+
+} 
+
+function Game0() { 
+document.getElementById("bet").value=0.01; 
+setInterval(function() { 
+if(document.getElementById("bet").value>parseFloat(document.getElementById("balance2").innerText)) { 
+document.getElementById("bet").value=parseFloat(document.getElementById("balance2").innerText); 
+} 
+}, 500); 
+} 
+
+</script> 
+</body> 
+</html> 
